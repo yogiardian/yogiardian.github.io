@@ -1,0 +1,146 @@
+        <div id="billboard-wrapper" style="">
+            <div id="big" style="width: 980px; height:200px;position:relative;margin:0 auto;left:0;right:0">              
+                <iframe id="billboard-img" src="https://cdns.klimg.com/d.kapanlaginetwork.com/banner/preview/2022/03/05/BTN/996x200-BTN-BATARA-SPEKTA.html?lp=%%DEST_URL%%&esc=%%CLICK_URL_ESC%%" width="980" height="200" scrolling="no" frameborder="0" ></iframe>
+            </div>
+        </div>
+
+
+<script>
+function getDomainNames() {
+        hostName = window.location.hostname;
+        rHN = hostName.substring(hostName.indexOf(".")+1,hostName.length);
+        ret = rHN.substring(0,rHN.indexOf("."));
+        return ret;
+    };
+if(typeof parent.kmklabs !== "undefined" && getDomainNames() !== "fimela"){
+
+    var bgColor = (parent.window.kmklabs.channel.full_slug == "e-sports") ? "#0a101b" : "#FFFFFF";
+    var currentID = this.frameElement.getAttribute('id');
+        //console.log('currentID : '+currentID);
+    var parentID = parent.document.getElementById(currentID).parentNode.getAttribute('id');
+        //console.log('parentID : '+parentID);
+    var topparentID = parent.document.getElementById(parentID).parentNode.getAttribute('id');
+        //console.log('topparentID : '+topparentID);
+    var iframeParentEl = parent.document.getElementById(topparentID);
+    
+    var kmk_site = parent.window.kmklabs.site;
+    console.log('kmk_site : '+kmk_site);
+    function contentWidth(){
+        var width = 996;
+        if(kmk_site==="bola"){
+            width = 980;
+        } else if(kmk_site==="bintang"){
+            width = 1040;
+        } else if(kmk_site==="liputan6"){
+           if (parent.window.kmklabs.channel.full_slug == "pilpres" || parent.window.kmklabs.channel.full_slug == "pileg") {
+                parent.gamScrollTweakHeader();
+            }
+            width = 1010;
+        }
+        return width;
+    };
+    if(kmk_site!=="liputan6"){
+        /* tweak for bola.com/asian-games */
+        console.log('not liputan6');
+        if (parent.document.querySelector('div.fimela--header')) {
+            console.log(parent.document.querySelector('div.fimela--header'));
+            parent.document.querySelector('div.fimela--header').classList.add('gam-tweak-header');
+            parent.document.querySelector('div.fimela--header').classList.add('gam-header-billboard');
+        }
+
+        if (parent.document.querySelector('header.site-header')) {
+            parent.document.querySelector('header.site-header').classList.add('gam-tweak-header');
+            parent.document.querySelector('header.site-header').classList.add('gam-header-billboard');
+        }
+
+        if(parent.window.kmklabs.channel.full_slug === "asian-games"){
+            var billboard_style = "\
+                    body{padding-top: 0 !important;}\
+                    #billboard-wrapper{width: "+contentWidth()+"px; background-color: "+bgColor+"; margin: 0 auto;}\
+                    #user-menu-container{padding:0 10px 0 0;}\
+                    header.site-header{\
+                        width: "+contentWidth()+"px;\
+                        margin: 0 auto;\
+                    }\
+                    header.fixed-header_slim{\
+                        left: 50%;\
+                        margin-left: -"+contentWidth()/2+"px;\
+                    }\
+                    .navbar--menu__list_slim{width: 840px !important;}\
+                    .navbar--menu{width: "+contentWidth()+"px;}\
+                    .site-header, .navbar--top, .navbar--menu{background-color:#FFFFFF;}\
+                    .container-main{margin-top:-25px;}\
+            ";
+        } else {
+            var billboard_style = "\
+            /*tweak for bola.com and bintang.com*/\
+                    body{padding-top: 0 !important;}\
+                    #billboard-wrapper{width: "+contentWidth()+"px; background-color: "+bgColor+"; margin: 0 auto;}\
+                    #user-menu-container{padding:0 10px 0 0;}\
+                    header.site-header{\
+                        width: "+contentWidth()+"px;\
+                        margin: 0 auto;\
+                    }\
+                    header.fixed-header_slim{\
+                        left: 50%;\
+                        margin-left: -"+contentWidth()/2+"px;\
+                    }\
+                    .navbar--menu__list_slim{width: 840px !important;}\
+                    .navbar--menu{position: inherit;width: "+contentWidth()+"px;}\
+                    .container-main{margin-top:-25px;}\
+            ";
+        }
+    }else if(kmk_site==="liputan6"){
+        parent.document.querySelector('header.site-header').classList.add('gam-tweak-header');
+        parent.document.querySelector('header.site-header').classList.add('gam-header-billboard');
+        var billboard_style = "\
+        /*tweak for liputan6.com*/\
+                body{padding-top: 0 !important;}\
+                #billboard-wrapper{width: "+contentWidth()+"px; background-color: "+bgColor+"; margin: 0 auto;}\
+                header.site-header{\
+                    width: "+contentWidth()+"px;\
+                    margin: 0 auto;\
+                }\
+                .fixed-header_slim{position: fixed !important;left: 50%;transform: translateX(-50%);}\
+                .navbar--menu_slim{position: relative !important;}\
+                .navbar--menu__list_slim{width: 840px !important;}\
+                .navbar--menu{position: inherit;width: "+contentWidth()+"px;}\
+                .container-main{margin-top:-25px;}\
+        ";
+        //parent.document.querySelector('header').setAttribute("style","position: static; top: 0px;");
+        //document.querySelector('header').setAttribute("style","position: static; top: 0px;");
+    }
+        
+    //create element to contain Billboard style template
+        var containerStyle = document.createElement('style');
+        containerStyle.type = 'text/css';
+        if (containerStyle.styleSheet){
+            containerStyle.styleSheet.cssText = billboard_style ;
+        } else {
+            containerStyle.appendChild(document.createTextNode(billboard_style ));
+        }
+       iframeParentEl.appendChild(document.getElementById("billboard-wrapper"));
+       iframeParentEl.appendChild(containerStyle);
+       parent.document.getElementById(currentID).style.display = "none";
+
+}else{
+       var bill_img = document.getElementById("billboard-img");
+       var bigEl = document.getElementById("big");
+       big.style.width = "996px";
+       bill_img.setAttribute("src","https://cdns.klimg.com/d.kapanlaginetwork.com/banner/preview/2022/03/05/BTN/996x200-BTN-BATARA-SPEKTA.html?lp=%%DEST_URL%%&esc=%%CLICK_URL_ESC%%");
+       bill_img.setAttribute("width","996");
+       var iframeEl = window.frameElement;
+       var iframeParentEl  = iframeEl.parentElement;
+       iframeEl.width = 996;
+       iframeEl.height = 200;
+       iframeParentEl.parentNode.style.height = "auto";
+
+       if (parent.document.querySelector('div.fimela--header')) {
+            parent.document.querySelector('div.fimela--header').classList.add('gam-tweak-header');
+            parent.document.querySelector('div.fimela--header').classList.add('gam-header-billboard');
+        }
+}
+
+/*window.frameElement.parentElement.parentElement.style.cssText = "margin-top : 5px !important";*/
+</script>
+<img src="%%VIEW_URL_UNESC%%https://cdns.klimg.com/d.kapanlaginetwork.com/banner/asset/img/pixel.png" style="display:none;"/>
