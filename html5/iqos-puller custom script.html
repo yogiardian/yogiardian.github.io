@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQOS PULLER</title>
+    <script type="text/javascript">
+        (function(){
+            var qs = (function(a) {
+            if (a == "") return {};
+            var b = {};
+            for (var i = 0; i < a.length; ++i)
+            {
+            var p=a[i].split('=', 2);
+            if (p.length == 1)
+            b[p[0]] = "";
+            else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+            }
+            return b;
+            })(window.location.search.substr(1).split('&'));
+            var screenWidth = (qs['w'] ? qs['w'] : 480) ;
+            var docScale = screenWidth / 480;
+            window.GAM_CLICK_TRACKING = (qs['c'] ? qs['c'] : '');
+            document.documentElement.style.transform = "scale(" + docScale + "," + docScale + ")";
+            document.documentElement.style.webkitTransform = "scale(" + docScale + "," + docScale + ")";
+            document.documentElement.style.mozTransform = "scale(" + docScale + "," + docScale + ")";
+            document.documentElement.style.oTransform = "scale(" + docScale + "," + docScale + ")";
+            document.documentElement.style.transformOrigin = "0 0";
+            document.documentElement.style.webkitTransformOrigin = "0 0";
+            document.documentElement.style.mozTransformOrigin = "0 0";
+            document.documentElement.style.oTransformOrigin = "0 0";
+        })();
+    </script>
+</head>
+<body style="margin: 0;">
+    <script>
+        console.log("GAM_CLICK_TRACKING : ", window.GAM_CLICK_TRACKING);
+    </script>
+    <script type="text/adtag">
+        <ins class='dcmads' style='display:inline-block;width:320px;height:250px'
+            data-dcm-placement='N571601.3931305EMTEK/B27549852.339775207'
+            data-dcm-rendering-mode='script'
+            data-dcm-https-only
+            data-dcm-gdpr-applies='gdpr=${GDPR}'
+            data-dcm-gdpr-consent='gdpr_consent=${GDPR_CONSENT_755}'
+            data-dcm-addtl-consent='addtl_consent=${ADDTL_CONSENT}'
+            data-dcm-ltd='false'
+            data-dcm-resettable-device-id=''
+            data-dcm-app-id=''>
+            <script src='https://www.googletagservices.com/dcm/dcmads.js'></scr+ipt>
+        </ins>
+    </script>
+    <script language="javascript" type="text/javascript" src="https://cdn.doubleverify.com/dvbs_src.js?ctx=23723644&cmp=27549852&plc=339775207&sid=7600411&dvregion=0&unit=320x250"></script>
+</body>
+</html>
